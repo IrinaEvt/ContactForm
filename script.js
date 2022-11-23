@@ -3,6 +3,7 @@
 
 let countriesDropDown = document.querySelector("#country-select");
 
+
 $.getJSON('https://api.npoint.io/66866aef2c21692fe055',function(data){
 
   let country;
@@ -29,9 +30,9 @@ let fname = document.getElementById("fname").value;
 let lname = document.getElementById("lname").value;
 let email = document.getElementById("email").value;
 let phone = document.getElementById("phone").value;
-let price = document.getElementById("price").value;
+let bDate = document.getElementById("b_date").value;
 let error = document.getElementById("error-message");
-console.log(error);
+console.log(bDate);
 let text;
 
 error.style.padding = "10px";
@@ -49,6 +50,18 @@ error.innerHTML = text;
 console.log(error);
 return false;
 }
+
+
+  let dateString = document.getElementById('b_date').value;
+  let myDate = new Date(dateString);
+  let today = new Date();
+  if ( myDate > today ) { 
+    text = "Please Enter valid Date";
+    error.innerHTML = text;
+    return false; 
+  }
+
+
 
 let regex = /^\(?([0-9]{3})\)?[-]([0-9]{3})[-]([0-9]{4})$/;
 if(!phone.match(regex)){
@@ -68,6 +81,7 @@ text = "Please Enter valid Email";
 error.innerHTML = text;
 return false;
 }
+
 
 alert("Form Submitted Successfully!");
 return true;
